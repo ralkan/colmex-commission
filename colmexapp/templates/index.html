@@ -4,8 +4,18 @@
     </head>
     <body>
       <form action="upload" method="POST" enctype="multipart/form-data">
+        <div>
         <input type="file" name="csvfile" />
+        </div>
+        <br />
+        <div>
+          <label for="colmexcomm">Colmex Commission?</label>
+        <input type="checkbox" name="colmexcomm" id="colmexcomm" />
+        </div>
+        <br />
+        <div>
         <input type="submit" name="submit" />
+        </div>
       </form>
     </body>
 </html>

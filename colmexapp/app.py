@@ -34,6 +34,7 @@ def index():
 @app.route('/upload', methods=['POST'])
 def upload():
     total_commissions = Decimal('0')
+    colmexcomm = True if request.form.get('colmexcomm') else False
     if 'csvfile' not in request.files:
         flash('No file part')
         return redirect(request.url)
@@ -59,7 +60,7 @@ def upload():
             nscc_fee="0",
             **tsv_fields)
 
-        commission = Decimal(fields.shares) * Decimal('0.006')
+        commission = Decimal(fields.shares) * (Decimal('0.006') if colmexcomm is False else Decimal('0.01'))
         if commission < Decimal('1.5'):
             commission = Decimal('1.5')
 
